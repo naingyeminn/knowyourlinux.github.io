@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<link rel="stylesheet" href="/_assets/main.css" />
+
+    <title>JAVA Heap Analysis - Know Your Linux</title>
+  </head>
+  <body>
+    <div class="main">
+      <nav class="navigation">
+        <a href="/">Know Your Linux</a>
+      </nav>
+      <article>
+        <header>
+          <h1 class="article-title">JAVA Heap Analysis</h1>
+          <div class="article-info">
+            <div>
+              <span
+                >Created At：<time datetime="1688102340000"
+                  >2023-06-30 11:49</time
+                ></span
+              >
+              <span
+                >Updated At：<time datetime="1689514234137"
+                  >2023-07-16 20:00</time
+                ></span
+              >
+            </div>
+            
+          </div>
+        </header>
+        <div class="article-content markdown-body"><h2 id="java-heap-analysis">JAVA Heap Analysis</h2>
+<p>This is just a note for my personal use. To verify the Java heap usage, we can use <code>jstat</code> command.</p>
+<p><code>jstat -gc &lt;PID&gt;</code></p>
+<p>S0C - Eden space capacity<br />
+S1C - Survivor space capacity<br />
+EC - Eden space capacity<br />
+OC - Old space capacity</p>
+<p>S0U - Eden space utilization<br />
+S1U - Survivor space utilization<br />
+EU - Eden space utilization<br />
+OU - Old space utilization</p>
+<p>Heap Utilizaiton = S0U + S1U + EU + OU<br />
+Heap Capacity = S0C + S1C + EC + OC</p>
+</div>
+      </article>
+    </div>
+  </body>
+</html>

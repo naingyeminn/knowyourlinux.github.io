@@ -1,11 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0">
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
         <title></title>
         <link>undefined</link>
         <description>undefined</description>
-        <lastBuildDate>Sun, 16 Jul 2023 12:48:45 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 16 Jul 2023 13:31:37 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Joplin Pages Publisher</generator>
+        <item>
+            <title><![CDATA[JAVA Heap Analysis]]></title>
+            <guid>a775414b6670437fa9e58c6b1a4755c6</guid>
+            <pubDate>Fri, 30 Jun 2023 05:19:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h2 id="java-heap-analysis">JAVA Heap Analysis</h2>
+<p>This is just a note for my personal use. To verify the Java heap usage, we can use <code>jstat</code> command.</p>
+<p><code>jstat -gc &lt;PID&gt;</code></p>
+<p>S0C - Eden space capacity<br />
+S1C - Survivor space capacity<br />
+EC - Eden space capacity<br />
+OC - Old space capacity</p>
+<p>S0U - Eden space utilization<br />
+S1U - Survivor space utilization<br />
+EU - Eden space utilization<br />
+OU - Old space utilization</p>
+<p>Heap Utilizaiton = S0U + S1U + EU + OU<br />
+Heap Capacity = S0C + S1C + EC + OC</p>
+]]></content:encoded>
+        </item>
     </channel>
 </rss>
