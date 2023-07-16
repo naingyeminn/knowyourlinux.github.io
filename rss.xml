@@ -4,9 +4,35 @@
         <title></title>
         <link>undefined</link>
         <description>undefined</description>
-        <lastBuildDate>Sun, 16 Jul 2023 14:18:37 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 16 Jul 2023 15:19:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Joplin Pages Publisher</generator>
+        <item>
+            <title><![CDATA[Fixing a broken sudoers file]]></title>
+            <guid>fe5b60fbc1c7493b84290dcf5a95ef27</guid>
+            <pubDate>Sun, 16 Jul 2023 14:48:58 GMT</pubDate>
+            <content:encoded><![CDATA[<p>Need to open two SSH sessions to the server.</p>
+<p><strong>Step 1</strong><br />
+Get the process ID of the shell from the first SSH session.</p>
+<div><pre class="hljs"><code>user<span class="hljs-variable">@server</span><span class="hljs-symbol">:~</span><span class="hljs-variable">$ </span>echo <span class="hljs-variable">$$</span>
+<span class="hljs-number">20486</span></code></pre></div>
+<p><strong>Step 2</strong><br />
+Start a PolicyKit authentication agent in the second session. Use the PID from the first step.</p>
+<div><pre class="hljs"><code>user<span class="hljs-variable">@server</span><span class="hljs-symbol">:~</span><span class="hljs-variable">$ </span>pkttyagent --process <span class="hljs-number">20486</span></code></pre></div>
+<p><strong>Step 3</strong><br />
+Open the sudoers file to be fixed in the first session by using <code>pkexec</code></p>
+<div><pre class="hljs"><code>user<span class="hljs-variable">@server</span><span class="hljs-symbol">:~</span><span class="hljs-variable">$ </span>pkexec vi /etc/sudoers</code></pre></div>
+<p><strong>Step 4</strong><br />
+Password prompt will appear in the second session. Login user account,  <code>user</code>, needs to be a sudoer and type in its password.</p>
+<div><pre class="hljs"><code>user@server:~$ pkttyagent --process 20486
+<span class="hljs-section">==== AUTHENTICATING FOR org.freedesktop.policykit.exec ===</span>
+Authentication is needed to run <span class="hljs-string">`/usr/bin/vi'</span> as the super user
+Authenticating as: User,,, (user)
+Password:</code></pre></div>
+<p><strong>Setp 5</strong><br />
+The sudoers file will be opened in the first session. Fix or update as needed.</p>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[JAVA Heap Analysis]]></title>
             <guid>a775414b6670437fa9e58c6b1a4755c6</guid>
