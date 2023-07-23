@@ -4,9 +4,44 @@
         <title></title>
         <link>undefined</link>
         <description>undefined</description>
-        <lastBuildDate>Sun, 16 Jul 2023 15:51:48 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 23 Jul 2023 11:51:28 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Joplin Pages Publisher</generator>
+        <item>
+            <title><![CDATA[Joplin]]></title>
+            <guid>c980c07a6e6e43199da8edadc67067d8</guid>
+            <pubDate>Sun, 23 Jul 2023 06:22:25 GMT</pubDate>
+            <content:encoded><![CDATA[<h2 id="why-joplin">Why Joplin?</h2>
+<p>I was looking for a note-taking app and found that everyone hypes <a title="https://www.notion.so/" href="https://www.notion.so/">Notion</a> these days. I used to take notes on Google Keeps, OneNotes, and Mac's Notes. All these apps are limited in feature compare to Notion, and it also has nice and clean UI for enjoyable user experience. However, it is just a yet another freeware which has no native app support for Linux. For a FOSS supporter, this is a bad impression, no matter how good it is. So I looked for an alternative and ended up with Joplin. It is an open source and has all the features I wanted.</p>
+<ol>
+<li>App for Linux</li>
+<li>Multi-device Sync</li>
+<li>Markdown Support</li>
+<li>Publishing the notes to Web</li>
+<li>Drawing Support (draw.io and excalidraw)</li>
+<li>Knowledge Graph</li>
+</ol>
+<h3 id="1-app-for-linux">1. App for Linux</h3>
+<p>It is available in AppImage and easy to set up. Just download the AppImage file, set execute permission, then double-click on the file.<br />
+Another option is running the installer script in Shell. It creates the desktop icon as well.</p>
+<div><pre class="hljs"><code>wget -O - https:<span class="hljs-regexp">//</span>raw.githubusercontent.com<span class="hljs-regexp">/laurent22/</span>joplin<span class="hljs-regexp">/dev/</span>Joplin_install_and_update.sh | bash</code></pre></div>
+<h3 id="2-multi-device-sync">2. Multi-device Sync</h3>
+<p>Joplin provides the commercial cloud service for the data sync but we can use other third-party cloud storages such as DropBox, OneDrive, NextCloud, or S3. I'm using DropBox.</p>
+<h3 id="3-markdown-support">3. Markdown Support</h3>
+<p>Markdown is the native format for Joplin but there are some plugins to make it look better. I don't use them as the default is enough for me.</p>
+<h3 id="4-publishing-the-notes-to-web">4. Publishing the notes to Web</h3>
+<p>This is the main feature I wanted. I used to write blogs hosted on <a title="https://pages.github.com/" href="https://pages.github.com/">GitHub Pages</a> by using a static site generator, <a title="https://gohugo.io/" href="https://gohugo.io/">Hugo</a>. Notion is way more better as there are a lot of free and paid templates, and also cool features. But publishing the notes with custom domain is not available in free account. My requirement is simple, just want to share some notes to public for my channel, <a title="https://www.youtube.com/@KnowYourLinux" href="https://www.youtube.com/@KnowYourLinux">KnowYourLinux</a> and it has to be organized. <a title="https://github.com/ylc395/joplin-plugin-pages-publisher" href="https://github.com/ylc395/joplin-plugin-pages-publisher">Joplin Pages Publisher</a> is good enough for that.</p>
+<h3 id="5-drawing-support">5. Drawing Support</h3>
+<p>I always use <a title="https://draw.io/" href="https://draw.io/">draw.io</a> for architecture diagrams and <a title="https://excalidraw.com/" href="https://excalidraw.com/">excalidraw</a> for some drafts and sketches. There are plugins for both. We can search and install draw.io plugin directly from the Plugins setting of Joplin app, but for excalidraw plugin, only lower version is available in there and it doesn't work with newer Joplin version. We need to download <code>.jpl</code> from the GitHub project and install manually from file.<br />
+<a title="https://github.com/marc0l92/joplin-plugin-drawio" href="https://github.com/marc0l92/joplin-plugin-drawio">joplin-plugin-drawio</a><br />
+<a title="https://github.com/artikell/joplin-excalidraw" href="https://github.com/artikell/joplin-excalidraw">joplin-excalidraw</a></p>
+<h3 id="6-knowledge-graph">6. Knowledge Graph</h3>
+<p>This one is just a fancy feature for me at the moment. I just want to give it a try.<br />
+<a title="https://github.com/treymo/joplin-link-graph" href="https://github.com/treymo/joplin-link-graph">joplin-link-graph</a></p>
+<p>I will add more if I found new useful features.</p>
+<p>Cheers!</p>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Fixing a broken sudoers file]]></title>
             <guid>fe5b60fbc1c7493b84290dcf5a95ef27</guid>
