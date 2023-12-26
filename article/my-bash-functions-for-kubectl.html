@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<link rel="stylesheet" href="/_assets/main.css" />
+
+    <title>My Bash Functions for kubectl - Know Your Linux</title>
+  <link rel="stylesheet" href="/_markdown_plugin_assets/highlight.js/atom-one-light.css" /></head>
+  <body>
+    <div class="main">
+      <nav class="navigation">
+        <a href="/">Know Your Linux</a>
+      </nav>
+      <article>
+        <header>
+          <h1 class="article-title">My Bash Functions for kubectl</h1>
+          <div class="article-info">
+            <div>
+              <span
+                >Created At：<time datetime="1690123013031"
+                  >2023-07-23 21:06</time
+                ></span
+              >
+              <span
+                >Updated At：<time datetime="1690785418540"
+                  >2023-07-31 13:06</time
+                ></span
+              >
+            </div>
+            
+          </div>
+        </header>
+        <div class="article-content markdown-body"><h2 id="how-to-configure">How to Configure</h2>
+<p>Just add them to the <code>~/.bashrc</code> or <code>~/.bash_profile</code></p>
+<hr />
+<h2 id="adding-a-new-kubeconfig-to-existing-config">Adding a new kubeconfig to existing config</h2>
+<p>This function is for adding a new <code>kubeconfig</code> to existing default config, <code>~/.kube/config</code></p>
+<div><pre class="hljs"><code>kubeadd (){ 
+  cp ~<span class="hljs-regexp">/.kube/</span>config ~<span class="hljs-regexp">/.kube/</span>config.$(date +%F) 
+  KUBECONFIG=~<span class="hljs-regexp">/.kube/</span>config:<span class="hljs-variable">$1</span> kubectl config view --flatten &gt; <span class="hljs-regexp">/tmp/</span>config 
+  mv <span class="hljs-regexp">/tmp/</span>config ~<span class="hljs-regexp">/.kube/</span>config 
+  chmod <span class="hljs-number">600</span> ~<span class="hljs-regexp">/.kube/</span>config 
+} </code></pre></div>
+<h3 id="usage">Usage</h3>
+<div><pre class="hljs"><code><span class="hljs-variable">$ </span>kubeadd cluster1.conf</code></pre></div>
+<hr />
+<h2 id="setting-kubeconfig-for-each-shell">Setting kubeconfig for each shell</h2>
+<p>Normally, people uses <code>kubectl config use-context context_name</code> to change the cluster, and that cluster will be the default for all Shell environments. However, we need to access multiple clusters in different shell sessions concurrently. This function can help to achieve that.</p>
+<div><pre class="hljs"><code>kubeswitch(){ 
+  unset KUBECONFIG
+  <span class="hljs-built_in">mkdir</span> -p ${HOME}/.kube/<span class="hljs-built_in">contexts</span>
+  select <span class="hljs-built_in">context</span> <span class="hljs-keyword">in</span> $(kubectl config <span class="hljs-built_in">get</span>-<span class="hljs-built_in">contexts</span> -o name); <span class="hljs-keyword">do</span> 
+    kubectl config use-<span class="hljs-built_in">context</span> $<span class="hljs-built_in">context</span> &amp;&gt; /dev/null 
+    kubectl config <span class="hljs-built_in">view</span> --minify --<span class="hljs-built_in">context</span> $<span class="hljs-built_in">context</span> --<span class="hljs-built_in">flatten</span> &gt; ${HOME}/.kube/<span class="hljs-built_in">contexts</span>/$<span class="hljs-built_in">context</span>.conf 
+    echo <span class="hljs-string">"export KUBECONFIG=${HOME}/.kube/contexts/$context.conf"</span> 
+    chmod <span class="hljs-number">600</span> ${HOME}/.kube/<span class="hljs-built_in">contexts</span>/$<span class="hljs-built_in">context</span>.conf 
+    <span class="hljs-built_in">break</span> 
+  done 
+} 
+
+<span class="hljs-built_in">alias</span> kcs=<span class="hljs-string">"source &lt;(kubeswitch)"</span> </code></pre></div>
+<h3 id="usage-2">Usage</h3>
+<p>Running <code>kcs</code> alias command will show the cluster list from your <code>~/.kube/config</code> and you just need to type in the number of the cluster that you want to use.</p>
+<div><pre class="hljs"><code><span class="hljs-variable">$ </span>kcs
+<span class="hljs-number">1</span>) aks-cluster1
+<span class="hljs-number">2</span>) aks-cluster2
+<span class="hljs-number">3</span>) eks-cluster1
+<span class="hljs-number">4</span>) eks-cluster1
+<span class="hljs-number">5</span>) prod-cluster1
+<span class="hljs-comment">#? </span></code></pre></div>
+</div>
+      </article>
+    </div>
+  </body>
+</html>
