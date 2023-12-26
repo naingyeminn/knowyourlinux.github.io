@@ -1,17 +1,38 @@
-<?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-    <channel>
-        <title></title>
-        <link>undefined</link>
-        <description>undefined</description>
-        <lastBuildDate>Tue, 26 Dec 2023 01:39:15 GMT</lastBuildDate>
-        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
-        <generator>Joplin Pages Publisher</generator>
-        <item>
-            <title><![CDATA[Public Key Infrastructure]]></title>
-            <guid>0c13d6a53ff04351b4b84ebb29cb8095</guid>
-            <pubDate>Tue, 26 Dec 2023 00:28:09 GMT</pubDate>
-            <content:encoded><![CDATA[<h1 id="public-key-infrastructure">Public Key Infrastructure</h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<link rel="stylesheet" href="/_assets/main.css" />
+
+    <title>Public Key Infrastructure - Know Your Linux</title>
+  <link rel="stylesheet" href="/_markdown_plugin_assets/highlight.js/atom-one-light.css" /></head>
+  <body>
+    <div class="main">
+      <nav class="navigation">
+        <a href="/">Know Your Linux</a>
+      </nav>
+      <article>
+        <header>
+          <h1 class="article-title">Public Key Infrastructure</h1>
+          <div class="article-info">
+            <div>
+              <span
+                >Created At：<time datetime="1703550489782"
+                  >2023-12-26 06:58</time
+                ></span
+              >
+              <span
+                >Updated At：<time datetime="1703554683260"
+                  >2023-12-26 08:08</time
+                ></span
+              >
+            </div>
+            
+          </div>
+        </header>
+        <div class="article-content markdown-body"><h1 id="public-key-infrastructure">Public Key Infrastructure</h1>
 <ul>
 <li>
 <h2 id="encryption">Encryption</h2>
@@ -366,117 +387,8 @@ openssl dgst -sha256 -verify server.crt -signature file.sig file.txt</code></pre
 </ul>
 </li>
 </ul>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[Fixing a broken sudoers file]]></title>
-            <guid>fe5b60fbc1c7493b84290dcf5a95ef27</guid>
-            <pubDate>Sun, 16 Jul 2023 14:48:58 GMT</pubDate>
-            <content:encoded><![CDATA[<p>Need to open two SSH sessions to the server.</p>
-<p><strong>Step 1</strong><br />
-Get the process ID of the shell from the first SSH session.</p>
-<div><pre class="hljs"><code>user<span class="hljs-variable">@server</span><span class="hljs-symbol">:~</span><span class="hljs-variable">$ </span>echo <span class="hljs-variable">$$</span>
-<span class="hljs-number">20486</span></code></pre></div>
-<p><strong>Step 2</strong><br />
-Start a PolicyKit authentication agent in the second session. Use the PID from the first step.</p>
-<div><pre class="hljs"><code>user<span class="hljs-variable">@server</span><span class="hljs-symbol">:~</span><span class="hljs-variable">$ </span>pkttyagent --process <span class="hljs-number">20486</span></code></pre></div>
-<p><strong>Step 3</strong><br />
-Open the sudoers file to be fixed in the first session by using <code>pkexec</code></p>
-<div><pre class="hljs"><code>user<span class="hljs-variable">@server</span><span class="hljs-symbol">:~</span><span class="hljs-variable">$ </span>pkexec vi /etc/sudoers</code></pre></div>
-<p><strong>Step 4</strong><br />
-Password prompt will appear in the second session. Login user account,  <code>user</code>, needs to be a sudoer and type in its password.</p>
-<div><pre class="hljs"><code>user@server:~$ pkttyagent --process 20486
-<span class="hljs-section">==== AUTHENTICATING FOR org.freedesktop.policykit.exec ===</span>
-Authentication is needed to run <span class="hljs-string">`/usr/bin/vi'</span> as the super user
-Authenticating as: User,,, (user)
-Password:</code></pre></div>
-<p><strong>Setp 5</strong><br />
-The sudoers file will be opened in the first session. Fix or update as needed.</p>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[JAVA Heap Analysis]]></title>
-            <guid>a775414b6670437fa9e58c6b1a4755c6</guid>
-            <pubDate>Fri, 30 Jun 2023 05:19:00 GMT</pubDate>
-            <content:encoded><![CDATA[<h2 id="java-heap-analysis">JAVA Heap Analysis</h2>
-<p>This is just a note for my personal use. To verify the Java heap usage, we can use <code>jstat</code> command.</p>
-<p><code>jstat -gc &lt;PID&gt;</code></p>
-<p>S0C - Eden space capacity<br />
-S1C - Survivor space capacity<br />
-EC - Eden space capacity<br />
-OC - Old space capacity</p>
-<p>S0U - Eden space utilization<br />
-S1U - Survivor space utilization<br />
-EU - Eden space utilization<br />
-OU - Old space utilization</p>
-<p>Heap Utilizaiton = S0U + S1U + EU + OU<br />
-Heap Capacity = S0C + S1C + EC + OC</p>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[VIM Cheatsheet]]></title>
-            <guid>b15c6c624ce945bab9be5c7655efcee3</guid>
-            <pubDate>Fri, 26 May 2023 13:49:15 GMT</pubDate>
-            <content:encoded><![CDATA[<h2 id="vim-cheatsheet">VIM Cheatsheet</h2>
-<p><strong>Page Up/Down</strong><br />
-<code>Ctrl+b</code> - full page up<br />
-<code>Ctrl+f</code> - full page down<br />
-<code>Ctrl+u</code> - half page up<br />
-<code>Ctrl+d</code> - half page down</p>
-<hr />
-<p><strong>Explorer</strong><br />
-<code>:Ex</code> - explore files<br />
-<code>%</code> - new file<br />
-<code>d</code> - new directory</p>
-<hr />
-<p><strong>Split</strong><br />
-<code>:bd</code> - buffer delete</p>
-<p><code>:copen</code> - list files<br />
-<code>:cn</code> - next<br />
-<code>:cp</code> - previous</p>
-<p><code>:sp</code> - split<br />
-<code>:vsp</code> - v-split</p>
-<p><code>C+w [h,j,k,l]</code> - navigation</p>
-<p><code>C+w =</code> - equal splits<br />
-<code>C+w _</code> - max current split<br />
-<code>C+w |</code> - max current v-split</p>
-<hr />
-<p><strong>Tab</strong><br />
-<code>tabe</code> - tab edit<br />
-<code>gt</code> - next tab e.g. gt, 3gt<br />
-<code>gT</code> - previous tab<br />
-<code>:tabnew</code> - new tab<br />
-<code>:tabm</code> - move tab to right end<br />
-<code>:tabm 0</code> - move tab to left end<br />
-<code>:tabclose</code> - close tab<br />
-<code>:tabonly</code> - active tab only<br />
-<code>:tab ball</code> - open all buffer<br />
-<code>:drop file.txt</code> - open file.txt in current tab<br />
-<code>C+w T</code> - open the current split in new tab</p>
-<hr />
-<p><strong>Mark</strong><br />
-<code>m[char]</code> - mark e.g. ma, mb, mc<br />
-<code>'[char]</code> - go to marked line e.g. 'a, 'b, 'c<br />
-<code> `[char]</code>  - go to marked position e.g. `a, `b<br />
-<code>:marks</code> - list marks<br />
-<code>:delmarks a,b,c</code> - delete marks<br />
-<code>:delmarks!</code> - delete all marks</p>
-<hr />
-<p><strong>Fold</strong><br />
-<code>zf</code> - fold selected visual lines<br />
-<code>zo</code> - open fold<br />
-<code>zc</code> - close fold<br />
-<code>zd</code> - delete fold<br />
-<code>zE</code> - delete all fold<br />
-<code>zA</code> - open/close all fold in toggle</p>
-<hr />
-<p><strong>Explorer</strong><br />
-<code>Ex</code> - horizontal explorer<br />
-<code>Vex</code> - vertical explorer<br />
-<code>gh</code> - hide/unhide hidden files<br />
-<code>I</code> - hide/unhide banner<br />
-<code>i</code> - change view style</p>
-]]></content:encoded>
-        </item>
-    </channel>
-</rss>
+</div>
+      </article>
+    </div>
+  </body>
+</html>
